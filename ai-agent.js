@@ -1,14 +1,27 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  // Mudasir-style animated hero role
+  // Three-role hero animation
   const heroLabel=document.querySelector('.hero-right .hero-label');
   const heroTitle=document.querySelector('.hero-role-title');
   if(heroLabel&&heroTitle){
-    heroLabel.textContent='Backend Developer';
-    heroTitle.innerHTML=`<span class="role-viewport"><span class="role-stack"><span class="role-line"><span class="role-part-1">Java &amp; C++</span><span class="role-part-2">Developer</span></span><span class="role-line"><span class="role-part-1">Backend</span><span class="role-part-2">Developer</span></span></span></span>`;
-    let swapped=false;
+    heroLabel.textContent='Computer Systems Engineer';
+    heroTitle.innerHTML=`<span class="farm-role-viewport"><span class="farm-role-track"><span class="farm-role-item">Backend Developer</span><span class="farm-role-item">Server-Side Developer</span><span class="farm-role-item farm-role-java">Java Specialist | Spring Boot &amp; MySQL</span></span></span>`;
+
+    const style=document.createElement('style');
+    style.textContent=`
+      .farm-role-viewport{display:block;overflow:hidden;height:1.05em;line-height:1.05em;}
+      .farm-role-track{display:flex;flex-direction:column;transform:translateY(0);transition:transform .7s cubic-bezier(.65,0,.35,1);}
+      .farm-role-item{display:block;height:1.05em;line-height:1.05em;white-space:nowrap;}
+      .farm-role-java{background:linear-gradient(90deg,#9f6bff,#c9a1ff,#9f6bff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+      @media(max-width:680px){.farm-role-item{white-space:normal;height:auto;min-height:1.05em;}.farm-role-viewport{height:2.15em;}}
+    `;
+    document.head.appendChild(style);
+
+    const track=heroTitle.querySelector('.farm-role-track');
+    const items=heroTitle.querySelectorAll('.farm-role-item');
+    let index=0;
     setInterval(()=>{
-      swapped=!swapped;
-      heroTitle.querySelector('.role-stack')?.classList.toggle('is-swapped',swapped);
+      index=(index+1)%items.length;
+      track.style.transform=`translateY(-${index*1.05}em)`;
     },2500);
   }
 
