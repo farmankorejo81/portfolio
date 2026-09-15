@@ -1,25 +1,26 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  // Working 3-title hero animation
+  // Clean 3-title hero animation
   const heroTitle=document.querySelector('.hero-role-title');
   if(heroTitle){
     const roles=['Java Specialist | Spring Boot & MySQL','Backend Developer','Server-Side Developer'];
-    heroTitle.innerHTML=`<span class="farm-role-viewport"><span class="farm-role-track">${roles.map((r,i)=>`<span class="farm-role-item ${i===0?'farm-role-java':''}">${r}</span>`).join('')}</span></span>`;
-    heroTitle.style.overflow='visible';
-    heroTitle.style.minHeight='1.25em';
+    heroTitle.innerHTML=`<span class="farm-role-viewport">${roles.map((r,i)=>`<span class="farm-role-item ${i===0?'active':''} ${i===0?'farm-role-java':''}">${r}</span>`).join('')}</span>`;
     const style=document.createElement('style');
     style.textContent=`
-      .farm-role-viewport{display:block;position:relative;overflow:hidden;height:1.25em;width:100%;}
-      .farm-role-track{display:flex;flex-direction:column;transition:transform .65s cubic-bezier(.22,.61,.36,1);will-change:transform;}
-      .farm-role-item{display:block;flex:0 0 1.25em;height:1.25em;white-space:nowrap;line-height:1.15;}
-      .farm-role-java{font-size:clamp(1.05rem,2.35vw,2.55rem);letter-spacing:-.035em;background:linear-gradient(90deg,#9f6bff,#c9a1ff,#9f6bff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-      @media(max-width:680px){.farm-role-item{font-size:clamp(1rem,6vw,1.7rem);}.farm-role-java{font-size:clamp(.82rem,4.7vw,1.35rem);letter-spacing:-.02em;}}
+      .hero-role-title{overflow:visible!important;line-height:1!important;}
+      .farm-role-viewport{display:block;position:relative;width:100%;height:1.3em;overflow:hidden;}
+      .farm-role-item{position:absolute;left:0;top:0;width:100%;height:1.3em;display:flex;align-items:center;white-space:nowrap;opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;font-family:Poppins,sans-serif;font-size:clamp(1.15rem,3.2vw,2.8rem);line-height:1.1;letter-spacing:-.045em;}
+      .farm-role-item.active{opacity:1;transform:translateY(0);}
+      .farm-role-java{font-size:clamp(.72rem,2.15vw,1.8rem);letter-spacing:-.025em;background:linear-gradient(90deg,#9f6bff,#c9a1ff,#9f6bff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+      @media(max-width:1000px){.farm-role-item{font-size:clamp(1.05rem,3.8vw,2.2rem);}.farm-role-java{font-size:clamp(.7rem,2.4vw,1.5rem);}}
+      @media(max-width:680px){.farm-role-viewport{height:1.35em;}.farm-role-item{font-size:clamp(1rem,7vw,1.65rem);justify-content:center;letter-spacing:-.035em;}.farm-role-java{font-size:clamp(.62rem,4.1vw,1.15rem);letter-spacing:-.02em;justify-content:center;}}
     `;
     document.head.appendChild(style);
-    const track=heroTitle.querySelector('.farm-role-track');
+    const items=[...heroTitle.querySelectorAll('.farm-role-item')];
     let index=0;
     setInterval(()=>{
-      index=(index+1)%roles.length;
-      track.style.transform=`translateY(-${index*1.25}em)`;
+      items[index].classList.remove('active');
+      index=(index+1)%items.length;
+      items[index].classList.add('active');
     },2500);
   }
 
