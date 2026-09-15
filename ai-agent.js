@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const viewport = document.querySelector('meta[name="viewport"]');
   if (viewport) viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
 
-  // Mobile menu button
   const nav = document.querySelector('.nav-links');
   const topbar = document.querySelector('.topbar');
   if (nav && topbar && !topbar.querySelector('.nav-toggle')) {
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('is-open')));
   }
 
-  // Hero role
   const heroTitle = document.querySelector('.hero-role-title');
   if (heroTitle) {
     heroTitle.innerHTML = `<span class="farm-role-fixed"><span class="farm-role-item active"><span>Java Specialist</span><span>Spring Boot &amp; MySQL</span></span><span class="farm-role-item"><span>Backend</span><span>Developer</span></span><span class="farm-role-item"><span>Server-Side</span><span>Developer</span></span></span>`;
@@ -28,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => { items[i].classList.remove('active'); i = (i + 1) % items.length; items[i].classList.add('active'); }, 2600);
   }
 
-  // Contact form
   const contact = document.getElementById('contact');
   if (contact) {
     const grid = contact.querySelector('.contact-grid');
@@ -36,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (grid && col && !grid.querySelector('.farm-message-col')) {
       const msgCol = document.createElement('div');
       msgCol.className = 'contact-col reveal farm-message-col';
-      msgCol.innerHTML = `<form class="contact-form farm-contact-form"><div class="farm-message-title">Message</div><label for="farm-name">Your Name</label><input id="farm-name" name="name" type="text" placeholder="Your Name" required><label for="farm-email">Your Email</label><input id="farm-email" name="email" type="email" placeholder="Your Email" required><label for="farm-subject">Subject</label><input id="farm-subject" name="subject" type="text" placeholder="Subject" required><textarea id="farm-message" name="message" rows="6" placeholder="" required></textarea><button class="contact-submit" type="submit"><span>Send Message</span></button></form>`;
+      msgCol.innerHTML = `<form class="contact-form farm-contact-form"><div class="farm-message-title">Message</div><input id="farm-name" name="name" type="text" placeholder="Your Name" autocomplete="name" required><input id="farm-email" name="email" type="email" placeholder="Your Email" autocomplete="email" required><input id="farm-subject" name="subject" type="text" placeholder="Subject" required><textarea id="farm-message" name="message" rows="6" placeholder="Your Message" required></textarea><button class="contact-submit" type="submit"><span>Send Message</span></button></form>`;
       const form = msgCol.querySelector('form');
       form.addEventListener('submit', e => {
         e.preventDefault();
@@ -56,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Project images
   const projectImages = [{match:'Game Menu',src:'game-menu.svg',alt:'Game Menu Java Swing project preview'},{match:'Student Management System',src:'student-management.svg',alt:'Student Management System project preview'},{match:'Calculator',src:'calculator.svg',alt:'Calculator Java project preview'}];
   document.querySelectorAll('.project-card').forEach(card => {
     const title = card.querySelector('.project-title'); const wrap = card.querySelector('.project-image-wrap');
@@ -66,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   const projectStyle = document.createElement('style'); projectStyle.textContent = '.farm-project-image{width:100%;height:100%;display:block;object-fit:cover;border-radius:10px}'; document.head.appendChild(projectStyle);
 
-  // Mobile testimonials
   const reviewStyle = document.createElement('style');
   reviewStyle.textContent = `@media(max-width:680px){.test-marquee{width:100%!important;overflow:hidden!important;padding:0!important}.test-marquee-track{display:flex!important;gap:0!important;width:100%!important;animation:none!important;transition:transform .35s ease!important}.test-card{width:100%!important;min-width:100%!important;max-width:100%!important;flex:0 0 100%!important;box-sizing:border-box!important;padding:26px 22px!important}.test-avatar{width:72px!important;height:72px!important;object-fit:cover!important;display:block!important;margin:0 auto!important}.test-text{font-size:12px!important;line-height:1.75!important;overflow-wrap:anywhere!important}}`; document.head.appendChild(reviewStyle);
   const marquee = document.querySelector('.test-marquee'); const track = document.querySelector('.test-marquee-track');
@@ -80,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize',applyReview); applyReview();
   }
 
-  // AI Agent
   let toggle=document.getElementById('ai-agent-toggle'), box=document.getElementById('ai-agent-box');
   if(!toggle){toggle=document.createElement('button');toggle.id='ai-agent-toggle';toggle.type='button';toggle.setAttribute('aria-label','Open AI Agent');toggle.textContent='AI';document.body.appendChild(toggle)}
   if(!box){box=document.createElement('div');box.id='ai-agent-box';box.innerHTML=`<div class="ai-head"><div><strong>Farman AI Agent</strong><small>Portfolio Assistant</small></div><button class="ai-close" type="button" aria-label="Close">×</button></div><div class="ai-msgs"><div class="ai-welcome">Hi! I'm Farman's portfolio assistant. Ask me about skills, projects, Java, C++, MySQL, or contact details.</div></div><div class="ai-input-row"><input class="ai-input" type="text" placeholder="Ask something..." autocomplete="off"><button class="ai-send" type="button">Send</button></div>`;document.body.appendChild(box)}
