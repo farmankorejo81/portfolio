@@ -1,18 +1,19 @@
 document.addEventListener('DOMContentLoaded',()=>{
   const heroTitle=document.querySelector('.hero-role-title');
   if(heroTitle){
-    heroTitle.innerHTML=`<span class="farm-role-fixed"><span class="farm-role-item active"><span>Java Specialist</span><span>Spring Boot &amp; MySQL</span></span><span class="farm-role-item"><span>Backend Developer</span></span><span class="farm-role-item"><span>Server-Side Developer</span></span></span>`;
+    heroTitle.innerHTML=`<span class="farm-role-fixed"><span class="farm-role-item active"><span>Java Specialist</span><span>Spring Boot &amp; MySQL</span></span><span class="farm-role-item"><span>Backend</span><span>Developer</span></span><span class="farm-role-item"><span>Server-Side</span><span>Developer</span></span></span>`;
     const style=document.createElement('style');
     style.textContent=`
-      .hero-role-title{overflow:hidden!important;line-height:1!important;margin:0!important;height:5.4em!important;}
-      .farm-role-fixed{display:block;position:relative;width:100%;height:5.4em;overflow:hidden;}
-      .farm-role-item{position:absolute;left:0;top:0;width:100%;height:5.4em;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .4s ease,transform .4s ease,visibility 0s linear .4s;font-family:Poppins,sans-serif;font-size:clamp(2rem,3.7vw,4.3rem);line-height:1.08;letter-spacing:-.055em;box-sizing:border-box;}
+      .hero-role-title{overflow:hidden!important;line-height:1!important;margin:0!important;height:3.6em!important;}
+      .farm-role-fixed{display:block;position:relative;width:100%;height:3.6em;overflow:hidden;}
+      .farm-role-item{position:absolute;left:0;top:0;width:100%;height:3.6em;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s ease,transform .4s ease,visibility 0s linear .4s;font-family:Poppins,sans-serif;font-size:clamp(1.7rem,2.7vw,3rem);line-height:1.05;letter-spacing:-.04em;box-sizing:border-box;}
       .farm-role-item.active{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .4s ease,transform .4s ease,visibility 0s linear 0s;}
       .farm-role-item>span{display:block;white-space:nowrap;}
       .farm-role-item:first-child>span:first-child{color:#fff;}
-      .farm-role-item:first-child>span:last-child{background:linear-gradient(90deg,#9f6bff,#c9a1ff,#9f6bff);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:.82em;margin-top:.08em;}
-      @media(max-width:1000px){.hero-role-title{height:4.8em!important}.farm-role-fixed,.farm-role-item{height:4.8em}.farm-role-item{font-size:clamp(1.8rem,5vw,3.2rem)}}
-      @media(max-width:680px){.hero-role-title{height:4.8em!important;text-align:center}.farm-role-fixed,.farm-role-item{height:4.8em}.farm-role-item{align-items:center;justify-content:center;font-size:clamp(1.25rem,7vw,2rem);letter-spacing:-.035em}.farm-role-item:first-child>span:last-child{font-size:.78em}}
+      .farm-role-item:first-child>span:last-child,.farm-role-item:nth-child(2)>span:last-child,.farm-role-item:nth-child(3)>span:last-child{background:linear-gradient(90deg,#9f6bff,#c9a1ff,#9f6bff);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+      .farm-role-item:first-child>span:last-child{font-size:.82em;margin-top:.08em;}
+      @media(max-width:1000px){.hero-role-title{height:3.5em!important}.farm-role-fixed,.farm-role-item{height:3.5em}.farm-role-item{font-size:clamp(1.55rem,4.5vw,2.5rem)}}
+      @media(max-width:680px){.hero-role-title{height:3.5em!important;text-align:center}.farm-role-fixed,.farm-role-item{height:3.5em}.farm-role-item{align-items:center;justify-content:center;font-size:clamp(1.2rem,6vw,1.7rem);letter-spacing:-.025em}.farm-role-item:first-child>span:last-child{font-size:.78em}}
     `;
     document.head.appendChild(style);
     const items=[...heroTitle.querySelectorAll('.farm-role-item')];let index=0;
