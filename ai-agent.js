@@ -2,24 +2,24 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Working 3-title hero animation
   const heroTitle=document.querySelector('.hero-role-title');
   if(heroTitle){
-    const roles=['Backend Developer','Server-Side Developer','Java Specialist | Spring Boot & MySQL'];
-    heroTitle.innerHTML=`<span class="farm-role-viewport"><span class="farm-role-track">${roles.map((r,i)=>`<span class="farm-role-item ${i===2?'farm-role-java':''}">${r}</span>`).join('')}</span></span>`;
+    const roles=['Java Specialist | Spring Boot & MySQL','Backend Developer','Server-Side Developer'];
+    heroTitle.innerHTML=`<span class="farm-role-viewport"><span class="farm-role-track">${roles.map((r,i)=>`<span class="farm-role-item ${i===0?'farm-role-java':''}">${r}</span>`).join('')}</span></span>`;
     heroTitle.style.overflow='visible';
-    heroTitle.style.minHeight='1.15em';
+    heroTitle.style.minHeight='1.25em';
     const style=document.createElement('style');
     style.textContent=`
-      .farm-role-viewport{display:block;position:relative;overflow:hidden;height:1.2em;width:100%;}
+      .farm-role-viewport{display:block;position:relative;overflow:hidden;height:1.25em;width:100%;}
       .farm-role-track{display:flex;flex-direction:column;transition:transform .65s cubic-bezier(.22,.61,.36,1);will-change:transform;}
-      .farm-role-item{display:block;flex:0 0 1.2em;height:1.2em;white-space:normal;line-height:1.15;}
-      .farm-role-java{background:linear-gradient(90deg,#9f6bff,#c9a1ff,#9f6bff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-      @media(max-width:680px){.farm-role-item{font-size:.8em;}}
+      .farm-role-item{display:block;flex:0 0 1.25em;height:1.25em;white-space:nowrap;line-height:1.15;}
+      .farm-role-java{font-size:clamp(1.05rem,2.35vw,2.55rem);letter-spacing:-.035em;background:linear-gradient(90deg,#9f6bff,#c9a1ff,#9f6bff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+      @media(max-width:680px){.farm-role-item{font-size:clamp(1rem,6vw,1.7rem);}.farm-role-java{font-size:clamp(.82rem,4.7vw,1.35rem);letter-spacing:-.02em;}}
     `;
     document.head.appendChild(style);
     const track=heroTitle.querySelector('.farm-role-track');
     let index=0;
     setInterval(()=>{
       index=(index+1)%roles.length;
-      track.style.transform=`translateY(-${index*1.2}em)`;
+      track.style.transform=`translateY(-${index*1.25}em)`;
     },2500);
   }
 
