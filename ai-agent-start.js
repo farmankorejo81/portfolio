@@ -1,0 +1,1 @@
+(()=>{const start=()=>{if(document.getElementById('ai-agent-started'))return;const s=document.createElement('script');s.id='ai-agent-started';s.src='ai-agent.js';document.body.appendChild(s)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start()})();
