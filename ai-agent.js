@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Keep the portfolio at a fixed mobile viewport scale so the page itself does not zoom.
+  const viewport = document.querySelector('meta[name="viewport"]');
+  if (viewport) {
+    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+  }
+
   // ---------------- HERO ROLE ----------------
   const heroTitle = document.querySelector('.hero-role-title');
   if (heroTitle) {
@@ -38,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (grid && col && !grid.querySelector('.farm-message-col')) {
       const msgCol = document.createElement('div');
       msgCol.className = 'contact-col reveal farm-message-col';
-      msgCol.innerHTML = `<form class="contact-form farm-contact-form"><div class="farm-message-title">Message</div><label for="farm-name">Your Name</label><input id="farm-name" name="name" type="text" placeholder="Your Name" required><label for="farm-email">Your Email</label><input id="farm-email" name="email" type="email" placeholder="Your Email" required><label for="farm-subject">Subject</label><input id="farm-subject" name="subject" type="text" placeholder="Subject" required><label for="farm-message">Your Message</label><textarea id="farm-message" name="message" rows="6" placeholder="Your Message" required></textarea><button class="contact-submit" type="submit"><span>Send Message</span></button></form>`;
+      msgCol.innerHTML = `<form class="contact-form farm-contact-form"><div class="farm-message-title">Message</div><label for="farm-name">Your Name</label><input id="farm-name" name="name" type="text" placeholder="Your Name" required><label for="farm-email">Your Email</label><input id="farm-email" name="email" type="email" placeholder="Your Email" required><label for="farm-subject">Subject</label><input id="farm-subject" name="subject" type="text" placeholder="Subject" required><label for="farm-message">Your Message</label><textarea id="farm-message" name="message" rows="6" placeholder="Your Message" required><button class="contact-submit" type="submit"><span>Send Message</span></button></form>`;
       const form = msgCol.querySelector('form');
       form.addEventListener('submit', e => {
         e.preventDefault();
@@ -134,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------- AI AGENT ----------------
-  // Always initialize the agent, whether the HTML already contains the controls or not.
   let toggle = document.getElementById('ai-agent-toggle');
   let box = document.getElementById('ai-agent-box');
 
@@ -187,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
       input.value = '';
     };
 
-    // Remove duplicate listeners if this file is ever initialized again.
     if (!toggle.dataset.aiReady) {
       toggle.dataset.aiReady = '1';
       toggle.addEventListener('click', e => {
