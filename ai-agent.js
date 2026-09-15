@@ -1,18 +1,17 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  // Clean 3-title hero animation
   const heroTitle=document.querySelector('.hero-role-title');
   if(heroTitle){
     const roles=['Java Specialist | Spring Boot & MySQL','Backend Developer','Server-Side Developer'];
     heroTitle.innerHTML=`<span class="farm-role-viewport">${roles.map((r,i)=>`<span class="farm-role-item ${i===0?'active':''} ${i===0?'farm-role-java':''}">${r}</span>`).join('')}</span>`;
     const style=document.createElement('style');
     style.textContent=`
-      .hero-role-title{overflow:visible!important;line-height:1!important;}
-      .farm-role-viewport{display:block;position:relative;width:100%;height:1.3em;overflow:hidden;}
-      .farm-role-item{position:absolute;left:0;top:0;width:100%;height:1.3em;display:flex;align-items:center;white-space:nowrap;opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;font-family:Poppins,sans-serif;font-size:clamp(1.15rem,3.2vw,2.8rem);line-height:1.1;letter-spacing:-.045em;}
-      .farm-role-item.active{opacity:1;transform:translateY(0);}
-      .farm-role-java{font-size:clamp(.72rem,2.15vw,1.8rem);letter-spacing:-.025em;background:linear-gradient(90deg,#9f6bff,#c9a1ff,#9f6bff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-      @media(max-width:1000px){.farm-role-item{font-size:clamp(1.05rem,3.8vw,2.2rem);}.farm-role-java{font-size:clamp(.7rem,2.4vw,1.5rem);}}
-      @media(max-width:680px){.farm-role-viewport{height:1.35em;}.farm-role-item{font-size:clamp(1rem,7vw,1.65rem);justify-content:center;letter-spacing:-.035em;}.farm-role-java{font-size:clamp(.62rem,4.1vw,1.15rem);letter-spacing:-.02em;justify-content:center;}}
+      .hero-role-title{overflow:visible!important;line-height:1!important;margin:0!important;}
+      .farm-role-viewport{display:block;position:relative;width:100%;height:1.35em;overflow:hidden;}
+      .farm-role-item{position:absolute;inset:0;width:100%;height:100%;display:flex;align-items:center;justify-content:flex-start;white-space:nowrap;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease,visibility 0s linear .5s;font-family:Poppins,sans-serif;font-size:clamp(1.35rem,3.5vw,2.9rem);line-height:1.05;letter-spacing:-.045em;}
+      .farm-role-item.active{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .5s ease,transform .5s ease,visibility 0s linear 0s;}
+      .farm-role-java{font-size:clamp(.9rem,2.25vw,1.9rem);letter-spacing:-.025em;background:linear-gradient(90deg,#9f6bff,#c9a1ff,#9f6bff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+      @media(max-width:1000px){.farm-role-item{font-size:clamp(1.2rem,4vw,2.25rem);}.farm-role-java{font-size:clamp(.82rem,2.7vw,1.55rem);}}
+      @media(max-width:680px){.farm-role-viewport{height:1.4em;}.farm-role-item{justify-content:center;font-size:clamp(1.05rem,7vw,1.65rem);letter-spacing:-.035em;}.farm-role-java{font-size:clamp(.68rem,4.5vw,1.2rem);letter-spacing:-.02em;}}
     `;
     document.head.appendChild(style);
     const items=[...heroTitle.querySelectorAll('.farm-role-item')];
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       items[index].classList.remove('active');
       index=(index+1)%items.length;
       items[index].classList.add('active');
-    },2500);
+    },2600);
   }
 
   const toggle=document.getElementById('ai-agent-toggle'),box=document.getElementById('ai-agent-box'),close=document.getElementById('ai-agent-close'),input=document.getElementById('ai-agent-input'),send=document.getElementById('ai-agent-send'),messages=document.getElementById('ai-agent-messages');
