@@ -1,0 +1,1 @@
+AI Agent files added. The portfolio loads the agent through ai-agent-init.js once the initializer is included.
