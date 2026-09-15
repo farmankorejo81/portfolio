@@ -1,1 +1,35 @@
-document.addEventListener('DOMContentLoaded',()=>{const toggle=document.getElementById('ai-agent-toggle'),box=document.getElementById('ai-agent-box'),close=document.getElementById('ai-agent-close'),input=document.getElementById('ai-agent-input'),send=document.getElementById('ai-agent-send'),messages=document.getElementById('ai-agent-messages');if(toggle&&box){const reply=q=>{q=q.toLowerCase();if(q.includes('skill'))return 'Farman works with Java, C++, OOP, MySQL, JDBC, Java Swing, Git/GitHub, HTML, CSS and backend development.';if(q.includes('project'))return 'Farman has built a Java Swing Game Menu, Student Management System, and Calculator. You can view them in the Projects section.';if(q.includes('java'))return 'Java is one of Farman’s main programming skills, including OOP, Swing and backend development.';if(q.includes('mysql')||q.includes('jdbc'))return 'Farman works with MySQL and JDBC for database-connected Java applications.';if(q.includes('github'))return 'You can find Farman’s projects on GitHub from the Projects section or the Contact section.';if(q.includes('contact')||q.includes('email'))return 'You can contact Farman at Farmankorejo10@gmail.com.';if(q.includes('who')||q.includes('about')||q.includes('farman'))return 'Farman Ali Korejo is a Computer Systems Engineering student at MUET who enjoys building practical software projects.';return 'I can tell you about Farman’s skills, projects, Java, JDBC, MySQL, backend development, GitHub, or contact information.'};const add=(text,who)=>{const d=document.createElement('div');d.className='ai-msg '+who;d.textContent=text;messages.appendChild(d);messages.scrollTop=messages.scrollHeight};const ask=()=>{const q=input.value.trim();if(!q)return;add(q,'user');input.value='';setTimeout(()=>add(reply(q),'bot'),250)};toggle.onclick=()=>box.classList.toggle('ai-open');close.onclick=()=>box.classList.remove('ai-open');send.onclick=ask;input.addEventListener('keydown',e=>{if(e.key==='Enter')ask()})}});
+document.addEventListener('DOMContentLoaded',()=>{
+  // Mudasir-style animated hero role
+  const heroLabel=document.querySelector('.hero-right .hero-label');
+  const heroTitle=document.querySelector('.hero-role-title');
+  if(heroLabel&&heroTitle){
+    heroLabel.textContent='Backend Developer';
+    heroTitle.innerHTML=`<span class="role-viewport"><span class="role-stack"><span class="role-line"><span class="role-part-1">Java &amp; C++</span><span class="role-part-2">Developer</span></span><span class="role-line"><span class="role-part-1">Backend</span><span class="role-part-2">Developer</span></span></span></span>`;
+    let swapped=false;
+    setInterval(()=>{
+      swapped=!swapped;
+      heroTitle.querySelector('.role-stack')?.classList.toggle('is-swapped',swapped);
+    },2500);
+  }
+
+  const toggle=document.getElementById('ai-agent-toggle'),box=document.getElementById('ai-agent-box'),close=document.getElementById('ai-agent-close'),input=document.getElementById('ai-agent-input'),send=document.getElementById('ai-agent-send'),messages=document.getElementById('ai-agent-messages');
+  if(toggle&&box){
+    const reply=q=>{
+      q=q.toLowerCase();
+      if(q.includes('skill'))return 'Farman works with Java, C++, OOP, MySQL, JDBC, Java Swing, Git/GitHub, HTML, CSS and backend development.';
+      if(q.includes('project'))return 'Farman has built a Java Swing Game Menu, Student Management System, and Calculator. You can view them in the Projects section.';
+      if(q.includes('java'))return 'Java is one of Farman’s main programming skills, including OOP, Swing and backend development.';
+      if(q.includes('mysql')||q.includes('jdbc'))return 'Farman works with MySQL and JDBC for database-connected Java applications.';
+      if(q.includes('github'))return 'You can find Farman’s projects on GitHub from the Projects section or the Contact section.';
+      if(q.includes('contact')||q.includes('email'))return 'You can contact Farman at Farmankorejo10@gmail.com.';
+      if(q.includes('who')||q.includes('about')||q.includes('farman'))return 'Farman Ali Korejo is a Computer Systems Engineering student at MUET who enjoys building practical software projects.';
+      return 'I can tell you about Farman’s skills, projects, Java, JDBC, MySQL, backend development, GitHub, or contact information.';
+    };
+    const add=(text,who)=>{const d=document.createElement('div');d.className='ai-msg '+who;d.textContent=text;messages.appendChild(d);messages.scrollTop=messages.scrollHeight};
+    const ask=()=>{const q=input.value.trim();if(!q)return;add(q,'user');input.value='';setTimeout(()=>add(reply(q),'bot'),250)};
+    toggle.onclick=()=>box.classList.toggle('ai-open');
+    close.onclick=()=>box.classList.remove('ai-open');
+    send.onclick=ask;
+    input.addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+  }
+});
