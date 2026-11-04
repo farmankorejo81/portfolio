@@ -1,0 +1,38 @@
+/* 3D portfolio enhancement — layered depth, glass surfaces and subtle motion */
+:root{--depth-purple:#a56cff;--depth-cyan:#63d9ff}
+body{background:radial-gradient(ellipse at 50% 0%,#33205b 0%,#100b20 42%,#080611 100%);background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.18;background-image:linear-gradient(#a56cff22 1px,transparent 1px),linear-gradient(90deg,#a56cff22 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 78%)}
+.topbar{background:linear-gradient(110deg,#100b20eF,#211238e8);border-bottom:1px solid #b58aff35;box-shadow:0 12px 40px #0005}
+.brand{text-shadow:0 0 22px #a56cff88}
+.hero{perspective:1200px}
+.hero-grid{transform-style:preserve-3d}
+.hero-left{transform:translateY(-35px) translateZ(55px)}
+.hero-right{transform:translateY(-55px) translateZ(45px)}
+.hero-picture-wrap{transform:rotateY(-8deg) rotateX(4deg) translateZ(45px);transform-style:preserve-3d;border:1px solid #c29aff55;background:linear-gradient(145deg,#352052cc,#120c21cc);box-shadow:22px 28px 70px #0009,-12px -12px 45px #a56cff18,inset 0 1px #fff3;transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s}
+.hero-picture-wrap:hover{transform:rotateY(0) rotateX(0) translateZ(70px) scale(1.025);box-shadow:30px 35px 90px #000b,0 0 65px #a56cff30,inset 0 1px #fff4}
+.hero-photo{box-shadow:0 12px 35px #0008}
+.hero-orb{transform:translateZ(65px);border:1px solid #ffffff45;box-shadow:inset -8px -10px 20px #4b168a88,0 0 45px #be60ff88}
+.hero-btn,.btn{box-shadow:0 8px 0 #512a88,0 15px 30px #0005;transform:translateY(0);transition:transform .2s,box-shadow .2s}
+.hero-btn:hover,.btn:hover{transform:translateY(-5px);box-shadow:0 13px 0 #512a88,0 22px 36px #0007}
+.about-visual{perspective:900px}
+.about-photo{transform:rotateY(10deg) rotateX(5deg);transition:transform .55s,box-shadow .55s;box-shadow:18px 22px 55px #0009,0 0 45px #a56cff33}
+.about-photo:hover{transform:rotateY(0) rotateX(0) translateZ(35px) scale(1.035)}
+.sk-card,.project-card,.certificate-card,.test-card,.stat-box{position:relative;transform-style:preserve-3d;background:linear-gradient(145deg,#24163bdc,#100b20eF);border:1px solid #a56cff45;box-shadow:0 18px 38px #0006,inset 0 1px #ffffff12;backdrop-filter:blur(14px);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.sk-card:before,.project-card:before,.certificate-card:before,.test-card:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(130deg,#ffffff16,transparent 38%,transparent 68%,#a56cff12);opacity:.8}
+.sk-card:hover,.project-card:hover,.certificate-card:hover,.test-card:hover,.stat-box:hover{transform:perspective(900px) rotateX(3deg) rotateY(-3deg) translateY(-9px) translateZ(12px);border-color:#c49affaa;box-shadow:0 30px 55px #0009,0 0 32px #a56cff22,inset 0 1px #ffffff22}
+.sk-cat-icon{box-shadow:0 8px 0 #382451,0 13px 22px #0007;transform:translateZ(18px)}
+.sk-tech-item{box-shadow:0 4px 0 #302044;transition:transform .2s,box-shadow .2s}
+.sk-tech-item:hover{transform:translateY(-3px);box-shadow:0 7px 0 #302044}
+.project-card{perspective:1000px}
+.project-card-inner{transform:translateZ(12px)}
+.project-image-placeholder{box-shadow:inset 0 0 35px #a56cff16,0 12px 28px #0006;transform:translateZ(12px)}
+.project-link-btn,.certificate-link{box-shadow:0 5px 0 #382451;transition:transform .2s,box-shadow .2s}
+.project-link-btn:hover,.certificate-link:hover{transform:translateY(-3px);box-shadow:0 8px 0 #382451}
+.xp-row{background:linear-gradient(90deg,#a56cff08,transparent);padding-left:18px;padding-right:18px;border-radius:12px;transition:transform .25s,background .25s}
+.xp-row:hover{transform:translateX(7px);background:linear-gradient(90deg,#a56cff19,transparent)}
+.contact-info a{transition:padding .2s,background .2s;padding-left:12px;border-radius:8px}
+.contact-info a:hover{padding-left:20px;background:#a56cff0d}
+footer{background:linear-gradient(180deg,#0b0715,#07050d)}
+@media(max-width:1000px){.hero-left,.hero-right{transform:none}}
+@media(max-width:800px){.hero-picture-wrap{transform:none}.hero-picture-wrap:hover{transform:translateY(-5px) scale(1.01)}.about-photo{transform:none}.sk-card:hover,.project-card:hover,.certificate-card:hover,.test-card:hover,.stat-box:hover{transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
